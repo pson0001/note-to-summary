@@ -1,0 +1,338 @@
+@use "../../styles/variables.scss" as *;
+
+.landing {
+  min-height: 100vh;
+  background: $bg-primary;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.burgerButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: $text-primary;
+  transition: opacity 0.2s;
+
+  height: 40px;
+  width: 40px;
+  &:hover {
+    opacity: 0.7;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: $color-primary;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-inverse;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.navLink {
+  color: $text-secondary;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.ctaButton {
+  background: $color-primary;
+  color: $text-inverse;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $color-primary-hover;
+  }
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 92px);
+}
+
+.backgroundElementsWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0, -50%);
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.backgroundElements {
+  display: flex;
+  gap: 2rem;
+  width: fit-content;
+  animation: scroll-cards 40s linear infinite;
+}
+
+.backgroundElementsWrapper .bgCard {
+  background: $bg-secondary;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.bgText {
+  font-size: 0.875rem;
+  color: $text-tertiary;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.bgProgress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: $color-gray-200;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: $color-primary;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.progressText {
+  font-size: 0.75rem;
+  color: $text-tertiary;
+  font-weight: 500;
+}
+
+.bgNote {
+  font-size: 0.8rem;
+  color: $text-muted;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.featureCard {
+  background: $bg-card;
+  border-radius: 2rem;
+  padding: 4rem;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 10px 40px $shadow-purple, 0 -10px 60px $shadow-blue;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.headline {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1rem;
+  color: $text-tertiary;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.integrationsWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  overflow: hidden;
+  margin-bottom: 3rem;
+  z-index: 5;
+}
+
+.integrations {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: fit-content;
+  animation: scroll-icons 20s linear infinite;
+}
+
+.integrationIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconImage {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Responsive design
+@media (max-width: 940px) {
+  .header {
+    padding: 1.5rem 3rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .burgerButton {
+    display: block;
+  }
+
+  .headerRight {
+    gap: 1rem;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $bg-primary;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid $border-medium;
+    z-index: 1000;
+
+    &.mobileMenuOpen {
+      display: flex;
+    }
+  }
+
+  .navLink {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .headline {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .featureCard {
+    padding: 2.5rem 2rem;
+  }
+
+  .integrationsWrapper {
+    margin-bottom: 2rem;
+  }
+
+  .integrations {
+    gap: 1.5rem;
+  }
+
+  .iconImage {
+    width: 40px;
+    height: 40px;
+  }
+}
+@keyframes scroll-icons {
+  0% {
+    transform: translateX(25%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+@keyframes scroll-cards {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

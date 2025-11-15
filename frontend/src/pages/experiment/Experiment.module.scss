@@ -1,0 +1,579 @@
+@use "../../styles/variables" as *;
+
+.page {
+  padding: 2rem;
+  background-color: $bg-primary;
+  min-height: calc(100vh - 88px);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: left;
+}
+
+.summaryCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 10px 20px $shadow-purple, 0 -10px 20px $shadow-blue;
+  transition: box-shadow 0.3s ease;
+
+  &.loading {
+    animation: breathe 2s ease-in-out infinite;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow: 0 10px 20px $shadow-purple, 0 -10px 20px $shadow-blue;
+  }
+  50% {
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4),
+      0 -10px 25px rgba(58, 76, 237, 0.4);
+  }
+}
+
+.summaryTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.summaryText {
+  font-size: 1rem;
+  color: $text-primary;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 2rem;
+  border-bottom: 1px solid $border-medium;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: $text-primary;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  font-weight: 700;
+
+  &:hover {
+    color: $text-primary;
+  }
+
+  &.activeTab {
+    color: $text-primary;
+    border-bottom-color: $color-primary;
+  }
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.detailCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detailTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.detailValue {
+  font-size: 1rem;
+  color: $text-primary;
+  margin: 0;
+}
+
+.conversionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.conversionCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conversionTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.conversionValues {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.conversionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.conversionNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.conversionLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: $text-secondary;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.controlDot {
+    background: #3b82f6;
+  }
+
+  &.variantDot {
+    background: #fbbf24;
+  }
+}
+
+.chartCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chartTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.chartLegend {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: $text-secondary;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.controlDot {
+    background: #3b82f6;
+  }
+
+  &.variantDot {
+    background: #fbbf24;
+  }
+}
+
+// Experiment Description Tab Styles
+.descriptionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.descriptionCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.descriptionCardFull {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+
+.descriptionCardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.descriptionCardText {
+  font-size: 1rem;
+  color: $text-primary;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.descriptionList {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: $text-primary;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.tag {
+  background: $bg-secondary;
+  color: $text-secondary;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+// Data Sources Tab Styles
+.dataSourcesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.dataSourceCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dataSourceHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dataSourceIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.dataSourceTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.dataSourceText {
+  font-size: 1rem;
+  color: $text-primary;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dataSourceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+
+.link {
+  color: $color-primary;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.linkSeparator {
+  color: $text-secondary;
+  font-size: 0.875rem;
+}
+
+.dataSourceUpdated {
+  font-size: 0.875rem;
+  color: $text-muted;
+  margin-top: auto;
+}
+
+// Additional Notes Tab Styles
+.notesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.addNoteButton {
+  background: $bg-card;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  transition: all 0.2s;
+  width: 100%;
+  color: $color-primary;
+  background: rgba(59, 130, 246, 0.1);
+
+  &:hover {
+    background: $bg-secondary;
+    border-color: $border-dark;
+  }
+}
+
+.notesList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.noteCard {
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.noteDate {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.noteContent {
+  font-size: 1rem;
+  color: $text-primary;
+  line-height: 1.6;
+}
+
+.noteTag {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  font-weight: 500;
+}
+
+.noteForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: $bg-card;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.noteInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid $border-medium;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: $text-primary;
+  background: $bg-secondary;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+}
+
+.noteTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid $border-medium;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: $text-primary;
+  background: $bg-secondary;
+  font-family: inherit;
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+}
+
+.noteFormActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  background: transparent;
+  border: 1px solid $border-medium;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: $text-primary;
+  transition: all 0.2s;
+
+  &:hover {
+    background: $bg-secondary;
+    border-color: $border-dark;
+  }
+}
+
+.submitButton {
+  background: $color-primary;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .detailsGrid,
+  .conversionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dataSourcesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1rem;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab {
+    white-space: nowrap;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .descriptionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dataSourcesGrid {
+    grid-template-columns: 1fr;
+  }
+}

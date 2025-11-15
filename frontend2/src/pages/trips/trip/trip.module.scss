@@ -1,0 +1,480 @@
+@use "../../../styles/variables" as *;
+
+.trip {
+  min-height: 100vh;
+  background-color: $canvas-background;
+  padding: 4rem 2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & span {
+    font-size: 1rem;
+  }
+}
+.tripContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  min-height: 70vh;
+  width: 100%;
+}
+.tripContentItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding-bottom: 6rem; // Space for fixed footer
+}
+
+.locationItem {
+  background-color: $card-background;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.locationHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.locationTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $text-primary;
+  flex: 1;
+}
+
+.locationCategory {
+  font-size: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+}
+
+// Category colors based on the image
+.categoryAttraction {
+  background-color: #e8d5ff; // Light purple
+  color: #7a4584; // Dark teal
+}
+
+.categoryRestaurant {
+  background-color: #ffe5d4; // Light orange
+  color: #8b4513; // Dark brown
+}
+
+.categoryHotel {
+  background-color: #d4edda; // Light green
+  color: #155724; // Dark green
+}
+
+.categoryActivity {
+  background-color: #d1ecf1; // Light blue
+  color: #4d727c; // Dark teal
+}
+
+.categoryEvent {
+  background-color: #d4f4dd; // Light yellow-green
+  color: #505e30; // Dark green
+}
+
+.categoryOther {
+  background-color: #fff9e6; // Light yellow
+  color: #8b4513; // Dark brown
+}
+
+.locationInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.locationName {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  font-weight: 500;
+}
+
+.locationDate {
+  font-size: 0.875rem;
+  color: $text-secondary;
+}
+
+.locationDescription {
+  margin: 0;
+  font-size: 0.875rem;
+  color: $text-primary;
+  line-height: 1.5;
+}
+
+.locationHighlights {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+
+  li {
+    font-size: 0.875rem;
+    color: $text-primary;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+}
+.tripFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem 2rem 1rem;
+  z-index: 1001;
+}
+.addButton {
+  background-color: $text-primary;
+  color: $card-background;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    transition: all 0.3s ease-in-out;
+  }
+}
+.closeButton svg {
+  transform: rotate(225deg);
+  transition: all 0.3s ease-in-out;
+}
+.trips {
+  position: relative;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.modalOverlayClose {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.modalContent {
+  background-color: $card-background;
+  border-radius: 1.5rem;
+  width: clamp(300px, 90vw, 600px);
+  height: 100%;
+  max-height: calc(80vh);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: fadeInUp 0.3s ease-in-out forwards;
+}
+
+.modalContentClose {
+  animation: fadeOutDown 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.modalCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-secondary;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.modalBody {
+  padding: 1.5rem;
+  flex: 1;
+  color: $text-primary;
+  display: flex;
+  flex-direction: column;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  //   height: 100%;
+  padding: 1.5rem;
+}
+.modalInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+}
+.modalButton {
+  background-color: $text-primary;
+  color: $card-background;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s ease-in-out;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.editModalBody {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: $text-primary;
+  background-color: $card-background;
+  transition: border-color 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: $text-primary;
+  }
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.highlightsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.addHighlightButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: $text-primary;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.highlightItem {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  .formInput {
+    flex: 1;
+  }
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-secondary;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #dc3545;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.editModalActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $card-background;
+  padding: 1rem;
+}
+
+.cancelButton,
+.saveButton {
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.cancelButton {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: $text-primary;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.saveButton {
+  background-color: $text-primary;
+  color: $card-background;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

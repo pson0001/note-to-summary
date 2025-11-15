@@ -1,0 +1,152 @@
+@use "../../styles/variables.scss" as *;
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navBar {
+  background: $bg-primary;
+  padding: 1.5rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navContent {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: $color-primary;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-inverse;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.logoText {
+  color: inherit;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navLink {
+  text-decoration: none;
+  color: $text-primary;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $text-primary;
+  }
+
+  &.active {
+    color: $color-primary;
+    background: rgba(59, 130, 246, 0.1);
+  }
+}
+
+.experimentTab {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  border-radius: 6px;
+  background: $bg-secondary;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: $text-secondary;
+
+  &:hover {
+    color: $text-primary;
+  }
+
+  &.active {
+    color: $color-primary;
+    background: rgba(59, 130, 246, 0.1);
+    & svg {
+      color: $color-primary;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.tabName {
+  white-space: nowrap;
+}
+
+.tabClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: $text-primary;
+  }
+}
+
+.demoText {
+  font-size: 1rem;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .navBar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navLinks {
+    gap: 1rem;
+  }
+
+  .navLink {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
