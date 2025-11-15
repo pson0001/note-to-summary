@@ -10,7 +10,11 @@ A dockerized AI notes application with React+Vite frontend, Node.js backend, and
 docker-compose up
 ```
 
+---
+
 ### **Backend API**: http://localhost:3000
+
+---
 
 ### **Frontend 1: Metrics Dashboard**: http://localhost:3001
 
