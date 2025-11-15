@@ -2,7 +2,7 @@
 
 A dockerized AI notes application with React+Vite frontend, Node.js backend, and Ollama inference engine.
 
-## Quick Start
+---
 
 ### Start all services (2 frontend, backend, and Ollama):
 
